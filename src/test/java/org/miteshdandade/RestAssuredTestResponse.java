@@ -10,6 +10,16 @@ import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+/**
+ * This class contains tests for validating the response from the DemoQA Book
+ * Store API.
+ * 
+ * The `GetBookDetails` test verifies that the API returns a successful response
+ * (status code 200) when retrieving book details.
+ * 
+ * The `ValidateHeader` test retrieves all the headers from the API response and
+ * prints them to the console.
+ */
 public class RestAssuredTestResponse {
 
     @Test
@@ -32,6 +42,17 @@ public class RestAssuredTestResponse {
 
     }
 
+    /**
+     * Validates the headers of the response from the DemoQA Book Store API.
+     * 
+     * This method sends a GET request to the
+     * "https://demoqa.com/BookStore/v1/Books" endpoint
+     * and retrieves all the headers from the response. It then iterates over the
+     * headers
+     * and prints the name and value of each header to the console.
+     * 
+     * @throws AssertionError if the status code of the response is not 200 (OK)
+     */
     @Test
     public void ValidateHeader() {
         RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";
@@ -43,7 +64,7 @@ public class RestAssuredTestResponse {
         // Iterate over all Headers
         for (Header header : allHeaders) {
             System.out.println("Key :- " + header.getName() + " Value :- " + header.getValue());
-            System.out.println("\n Print all Headers :- " +response.prettyPrint());
+            System.out.println("\n Print all Headers :- " + response.prettyPrint());
         }
     }
 
