@@ -1,9 +1,10 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.8.7-openjdk-18-slim
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
 
-COPY . /usr/src/app
-RUN mvn install
+# Copy project files and set working directory (similar to the previous example)
+COPY src /Advanced-Automation-Framework-Enterprise-Level/RestApiAutomationFramework/src
+COPY pom.xml /Advanced-Automation-Framework-Enterprise-Level/RestApiAutomationFramework/pom.xml
+WORKDIR /Advanced-Automation-Framework-Enterprise-Level/RestApiAutomationFramework
 
-CMD ["java","-jar","target/rest-assured-test-0.0.1-SNAPSHOT.jar"]
+# Run Maven clean and test commands
+ENTRYPOINT mvn clean test
