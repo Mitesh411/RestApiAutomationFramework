@@ -1,4 +1,4 @@
-FROM maven:3.8.7-openjdk-18-slim
+FROM maven:3.9.10-amazoncorretto-24-alpine
 
 
 # Copy project files and set working directory (similar to the previous example)
